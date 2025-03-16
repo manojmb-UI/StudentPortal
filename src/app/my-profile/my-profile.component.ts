@@ -6,5 +6,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./my-profile.component.css']
 })
 export class MyProfileComponent {
+  profileName:any;
+  profileEmail:any;
+  profileNumber:any;
+  editScreen: boolean = false;
 
+   constructor(){}
+
+   ngOnInit(){
+    this.getBasicDetails();
+   }
+   getBasicDetails(){
+      this.profileName = localStorage.getItem('name');
+      this.profileEmail = localStorage.getItem('email');
+      this.profileNumber = localStorage.getItem('mobile');
+
+   }  
+   editProfile(){
+    this.editScreen = true;
+   }
 }

@@ -49,5 +49,8 @@ export class ApiService {
       return res;
     }))
   }
+  getProfile(){
+    return
+  }
 
 }

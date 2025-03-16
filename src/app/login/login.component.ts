@@ -25,8 +25,14 @@ export class LoginComponent {
         return a.email === this.loginform.value.email && a.password === this.loginform.value.password;
       })
       if(user){
+        console.log(user,"userrr")
         const name = user.name;
+        const email = user.email;
+        const mobile = user.mobile;
+
         localStorage.setItem('name', name);
+        localStorage.setItem('email', email);
+        localStorage.setItem('mobile', mobile);
         alert('Login Successful');
         this.loginform.reset();
         this.router.navigate(['home'])
