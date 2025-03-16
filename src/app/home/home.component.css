@@ -1,0 +1,33 @@
+.content_container_row{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+.content_container_col{
+    flex:0 0 20%;
+    max-width: 20%;
+    padding: 0px 10px;
+}
+.content_container_box{
+    border-radius: 8px;
+    border: 1px solid grey;
+    border-left: 4px solid #f35252;
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    justify-content: space-between;
+    background-color: #fff;
+}
+.content_container_box p{
+    color: #000000;
+    font-size: 16px;
+    margin-bottom: 0px;
+}
+.content_container_box span{
+    color: #f35252;
+    font-size: 18px;
+    font-weight: 500;
+}
+.current_user_name{
+    color: #f35252;
+}

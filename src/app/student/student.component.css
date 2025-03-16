@@ -1,0 +1,10 @@
+.form-select:focus{
+    box-shadow: none;
+}
+.name_sort{
+    border: none;
+    background-color: none;
+}
+table{
+    background-color: #fff;
+}

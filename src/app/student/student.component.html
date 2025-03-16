@@ -1,0 +1,154 @@
+
+<nav class="navbar navbar-light bg-dark">
+    <div class="container">
+        <h6 class="text-white py-3">Student Management System</h6>
+        <div class="d-flex">
+            <button class="btn btn-success me-3" (click)="add()" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">Add
+                Student</button>
+                <p-button label="Check" />
+        </div>
+    </div>
+</nav>
+<div class=" mb-4 container">
+    <div class="row justify-content-end py-4">
+        <div class="col-md-3">
+            <select class="form-select" aria-label="Default select example" (change)="filtering($event)">
+                <option value="default" selected>default</option>
+                <option value="coimbatore">Coimbatore</option>
+                <option value="chennai">chennai</option>
+                <option value="trichy">Trichy</option>
+                <option value="kallakurichi">Kallakurichi</option>
+                <option value="tirunelveli">Tirunelveli</option>
+            </select>
+        </div>
+    </div>
+    <div class="overflow-auto">
+        <table class="table  table-bordered ">
+            <thead>
+                <tr>
+                    <th>S.no</th>
+                    <th class="d-flex align-items-center justify-content-between">
+                        <span>Name</span>
+                        <!-- <button class="name_sort" (click)="filterexample()">
+                            <i class="fa-solid" [ngClass]="{'fa-sort-up': ascendingOrder, ' fa-sort-down': !ascendingOrder}"></i>
+                        </button> -->
+                    </th>
+                    <th>Email</th>
+                    <th>Standard</th>
+                    <th>Class</th>
+                    <th>Mobile</th>
+                    <th>City</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let data of filteredStudentsData | paginate: { itemsPerPage: tableSize, currentPage: page,totalItems:count }; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{data.name}}</td>
+                    <td>{{data.email}}</td>
+                    <td>{{data.standard}}</td>
+                    <td>{{data.class}}</td>
+                    <td>{{data.mobile}}</td>
+                    <td>{{data.city}}</td>
+                    <td class="d-flex">
+
+                        <button class="btn btn_edit me-3" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            (click)="edit(data)"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="btn btn_delete" (click)="deletestud(data)"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <div class="d-flex align-items-center justify-content-between">
+
+                <select class="form-select w-auto" aria-label="Default select example" (change)="ontablesizechange($event)">
+                   <option *ngFor="let size of tableSizes">{{size}}</option>
+                </select>
+                <pagination-controls previousLabels="prev" nextLabel="Next" (pageChange)="ontabledatachange($event)">
+
+                </pagination-controls>
+        </div>
+       
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Student Management</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="formvalue">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Name</label>
+                        <input formControlName="name" name="name" type="name" class="form-control"
+                            id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <span class="text-danger"
+                            *ngIf="formvalue.get('name')?.invalid && formvalue.get('name')?.touched">Enter a Name</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                        <input formControlName="email" name="email" type="email" class="form-control"
+                            id="exampleInputEmail1" aria-describedby="emailHelp">
+
+                        <span class="text-danger"
+                            *ngIf="formvalue.get('email')?.invalid && formvalue.get('email')?.touched">Enter a
+                            Email</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Standard</label>
+                        <select  formControlName="standard" name="standard" class="form-control">
+                            <option value="10th">10th</option>
+                            <option value="12th">12th</option>
+                        </select>
+                        <span class="text-danger"
+                            *ngIf="formvalue.get('standard')?.invalid && formvalue.get('standard')?.touched">Select a Standard</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Class</label>
+                        <select  formControlName="class" name="class" class="form-control">
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                        </select>
+                        <span class="text-danger"
+                            *ngIf="formvalue.get('class')?.invalid && formvalue.get('class')?.touched">Select a Class</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Mobile</label>
+                        <input formControlName="mobile" name="mobile" type="number" class="form-control"
+                            id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <span class="text-danger"
+                            *ngIf="formvalue.get('mobile')?.invalid && formvalue.get('mobile')?.touched">Enter a
+                            Number</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">City</label>
+                        <select type="name" formControlName="city" name="city" class="form-control">
+                            <option value="coimbatore">Coimbatore</option>
+                            <option value="chennai">Chennai</option>
+                            <option value="trichy">Trichy</option>
+                            <option value="kallakurichi">Kallakurichi</option>
+                            <option value="tirunelveli">Tirunelveli</option>
+                        </select>
+                        <span class="text-danger"
+                            *ngIf="formvalue.get('city')?.invalid && formvalue.get('city')?.touched">Enter a City</span>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" *ngIf="showadd" (click)="addstudent()" [disabled]="formvalue.invalid"
+                    class="btn btn-primary" data-bs-dismiss="modal">Add</button>
+                <button type="button" *ngIf="showupdate" (click)="update()" [disabled]="formvalue.invalid"
+                    class="btn btn-primary" data-bs-dismiss="modal">Update</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,115 @@
+{
+  "teachers": [
+    {
+      "email": "ramthulsi26@gmail.com",
+      "name": "Ram keshavan",
+      "subject": "Science",
+      "standard": "10th",
+      "phonenumber": 9524429549,
+      "id": 2
+    },
+    {
+      "email": "sathish@gmail.com",
+      "name": "sathish",
+      "subject": "Tamil",
+      "standard": "10th",
+      "phonenumber": 9025125770,
+      "id": 3
+    },
+    {
+      "email": "manobala258@gmail.com",
+      "name": "MB.Manoj",
+      "subject": "Maths",
+      "standard": "10th",
+      "phonenumber": 6382103126,
+      "id": 4
+    }
+  ],
+  "posts": [
+    {
+      "id": 6,
+      "name": "ram",
+      "email": "ramthulsi26@gmail.com",
+      "standard": "10th",
+      "class": "A",
+      "mobile": 9524429549,
+      "city": "coimbatore"
+    },
+    {
+      "id": 7,
+      "name": "sathish",
+      "email": "sathishkumar3063@gmail.com",
+      "standard": "12th",
+      "class": "B",
+      "mobile": 6382103126,
+      "city": "chennai"
+    },
+    {
+      "id": 8,
+      "name": "dharshan",
+      "email": "dharshan@gmail.com",
+      "standard": "12th",
+      "class": "C",
+      "mobile": 6382103126,
+      "city": "kallakurichi"
+    },
+    {
+      "id": 9,
+      "name": "MB.Manoj",
+      "email": "manobala@gmail.com",
+      "standard": "12th",
+      "class": "B",
+      "mobile": 6382103126,
+      "city": "kallakurichi"
+    },
+    {
+      "id": 10,
+      "name": "sathish",
+      "email": "sathish@gmail.com",
+      "standard": "10th",
+      "class": "A",
+      "mobile": 6382103126,
+      "city": "chennai"
+    },
+    {
+      "id": 12,
+      "name": "Vishnu",
+      "email": "vish@gmail.com",
+      "standard": "10th",
+      "class": "A",
+      "mobile": 6382103126,
+      "city": "coimbatore"
+    },
+    {
+      "id": 15,
+      "name": "dhivya",
+      "email": "dhivya@gmail.com",
+      "standard": "12th",
+      "class": "A",
+      "mobile": 2345678873,
+      "city": "chennai"
+    },
+    {
+      "id": 16,
+      "name": "MB.Manoj",
+      "email": "manobala@gmail.com",
+      "standard": "10th",
+      "class": "C",
+      "mobile": 6382103126,
+      "city": "kallakurichi"
+    }
+  ],
+  "signup": [
+    {
+      "name": "MB.Manoj",
+      "email": "manobala@gmail.com",
+      "mobile": "06382103126",
+      "password": "3456789",
+      "id": 1
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

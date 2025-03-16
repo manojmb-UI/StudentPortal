@@ -1,0 +1,108 @@
+<!-- Button trigger modal -->
+<div class="container pt-4">
+    <div class="text-end">
+        <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="addteacherbtn()">
+            Add Teacher
+        </button>
+    
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">{{ModalHeaderName}}</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="teacherform">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" formControlName="email" name="email"
+                                aria-describedby="emailHelp">
+                            <span class="text-danger error_text"
+                                *ngIf="teacherform.get('email').touched && teacherform.get('email').errors">Enter The
+                                Email Address</span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" formControlName="name" name="name"
+                                aria-describedby="emailHelp">
+                            <span class="text-danger error_text"
+                                *ngIf="teacherform.get('name').touched && teacherform.get('name').errors">Enter The
+                                Name</span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Subject</label>
+                            <select class="form-control" id="standard" formControlName="subject" name="subject">
+                                <option value="Maths">Maths</option>
+                                <option value="English">English</option>
+                                <option value="Tamil">Tamil</option>
+                                <option value="Science">Science</option>
+                                <option value="Social">Social</option>
+                            </select>
+                            <span class="text-danger error_text"
+                                *ngIf="teacherform.get('subject').touched && teacherform.get('subject').errors">Enter
+                                The Subject</span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="standard" class="form-label">Standard</label>
+                            <select class="form-control" id="standard" formControlName="standard" name="standard">
+                                <option value="10th">10th</option>
+                                <option value="12th">12th</option>
+                            </select>
+                            <span class="text-danger error_text"
+                                *ngIf="teacherform.get('standard').touched && teacherform.get('standard').errors">Enter
+                                The Standard</span>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phonenumber" class="form-label">Phone Number</label>
+                            <input type="number" class="form-control" id="phonenumber" formControlName="phonenumber"
+                                name="phonenumber" aria-describedby="emailHelp">
+                            <span class="text-danger error_text"
+                                *ngIf="teacherform.get('phonenumber').touched && teacherform.get('phonenumber').errors">Enter
+                                The Phone Number</span>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary">Close</button>
+                    <button type="button" class="btn btn-primary" (click)="postteacher($event)" data-bs-dismiss="modal"
+                        *ngIf="addbutton">Add</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" *ngIf="updatebutton"
+                        (click)="updateteacher()">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Subject</th>
+                <th>Standard</th>
+                <th>Phone Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items,let i = index">
+                <td>{{i+1}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.subject}}</td>
+                <td>{{item.standard}}</td>
+                <td>{{item.phonenumber}}</td>
+                <td>
+                    <button class="btn btn_edit me-3" (click)="editteacher(item)" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button class="btn btn_delete" (click)="deleteteacher(item.id)"><i class="fa-solid fa-trash"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

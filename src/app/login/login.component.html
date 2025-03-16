@@ -1,0 +1,38 @@
+<div class="container-fluid  bg_img">
+  <div class="row  align-items-center justify-content-end  h_100">
+    <div class="col-md-4 ">
+
+    </div>
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-4">
+      <div class="text-center login_box bg-dark">
+        <h1>Student Login</h1>
+        <form class="py-4" [formGroup]="loginform" (ngSubmit)="login()">
+          <div class="mb-3 text-start">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" formControlName="email" name="email" class="form-control" id="exampleInputEmail1"
+              aria-describedby="emailHelp">
+              <span class="text-danger" *ngIf="loginform.get('email')?.invalid && loginform.get('email')?.touched">Email is Required</span>
+              <span class="text-danger" *ngIf="loginform.get('email')?.hasError('email')">
+                Invalid email address
+              </span>
+          </div>
+          <div class="mb-3 text-start">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" formControlName="password" name="password" class="form-control"
+              id="exampleInputPassword1">
+              <span class="text-danger" *ngIf="loginform.get('password')?.invalid && loginform.get('password')?.touched">Password is Required</span>
+          </div>
+          <button type="submit" class="btn btn-warning" [disabled]="loginform.invalid">Login</button>
+        </form>
+        <a  routerLink="/signup"> New user ? Click to Signup</a>
+      </div>
+
+    </div>
+    <div class="col-md-1">
+      
+    </div>
+  </div>
+</div>
