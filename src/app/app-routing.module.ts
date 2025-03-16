@@ -14,12 +14,12 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    canActivate: [authGuard], // Parent layout with the header
+    canActivate: [authGuard], 
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' }, 
       { path: 'student', component: StudentComponent },
       { path: 'teacher', component: TeacherComponent },
-      { path : 'myprofile' , component : MyProfileComponent},
+      { path: 'myprofile' , component : MyProfileComponent},
       { path: 'home', component: HomeComponent },
     ],
   },

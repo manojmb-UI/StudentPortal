@@ -1,12 +1,36 @@
 <div class="container pt-4">
     <div class="row">
         <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                   <h6>View Profile</h6>
+            <div class="card profile">
+                <div class="card-header d-flex align-items-center justify-content-between py-3">
+                   <h6 class="mb-0">{{editScreen ? 'Edit Screen' : 'View Profile' }}</h6>
+                   <button class="btn btn-primary" (click)="editProfile()" *ngIf="!editScreen">Edit Profile</button>
                 </div>
-                <div class="card-body">
-                   
+                <div class="card-body view_profile" *ngIf="!editScreen">
+                    <div class="row">
+                        <div class="col-4 mb-3">
+                            <label>Name</label>
+                            <p>{{profileName}}</p>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <label>Email</label>
+                            <p>{{profileEmail}}</p>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <label>Mobile Number</label>
+                            <p>{{profileNumber}}</p>
+                        </div>
+                    </div>
+                      
+                </div>
+                <div class="card-body edit_profile" *ngIf="editScreen">
+                    <div class="row">
+                        <div class="col-4 mb-3">
+                            <label>Name</label>
+                            <input type="text">
+                        </div>
+                       
+                    </div>
                       
                 </div>
             </div>

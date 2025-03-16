@@ -1,0 +1,14 @@
+@import "../../variable.css";
+
+.view_profile label,.edit_profile label{
+    font-size: var(--f-12);
+    color: var(--color-label-color);
+}
+
+.view_profile p {
+    font-size: var(--f-14);
+    color: var(--color-black);
+}
+.profile h6{
+    font-weight: var(--fw-700);
+}

@@ -1,10 +1,17 @@
-.form-select:focus{
+.form-select:focus {
     box-shadow: none;
 }
-.name_sort{
+
+.name_sort {
     border: none;
     background-color: none;
 }
-table{
-    background-color: #fff;
+
+table {
+    background-color: var(--color-white);
+}
+
+.stu_header {
+    font-size: var(--f-22);
+    font-weight: var(--fw-600);
 }
