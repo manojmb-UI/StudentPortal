@@ -35,7 +35,13 @@ table th, table td{
     padding: 10px 15px !important;
     font-size: var(--f-14);
 }
+table th{
+    background-color: var(--color-main-theme) !important;
+    color: var(--color-white);
+}
 .btn.show{
     border: none;
     border-color: none;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

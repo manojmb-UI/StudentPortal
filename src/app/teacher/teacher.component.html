@@ -1,12 +1,13 @@
 <!-- Button trigger modal -->
 <div class="container pt-4">
     <div class="text-end">
-        <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="addteacherbtn()">
+        <button type="button" class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            (click)="addteacherbtn()">
             Add Teacher
         </button>
-    
+
     </div>
-    
+
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -77,6 +78,47 @@
             </div>
         </div>
     </div>
+    <div class="filter_row mb-4">
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Filter
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <form class="row align-items-end" [formGroup]="filterForm">
+                            <div class="mb-3 col-4">
+                                <label for="subject" class="form-label">Subject</label>
+                                <select name="subject" id="subject" class="form-select" formControlName="subject">
+                                    <option value="Maths">Maths</option>
+                                    <option value="English">English</option>
+                                    <option value="Tamil">Tamil</option>
+                                    <option value="Science">Science</option>
+                                    <option value="Social">Social</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-4">
+                                <label for="standard" class="form-label">Standard</label>
+                                <select name="standard" class="form-select" id="standard" formControlName="standard">
+                                    <option value="10th">10th</option>
+                                    <option value="12th">12th</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-4">
+                                <button type="button" class="btn btn-secondary me-3"
+                                    (click)="cancelFilters()">Cancel</button>
+                                <button type="submit" class="btn btn-primary" (click)="applyFilters()" [disabled]="filterForm.invalid">Apply
+                                    Filter</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -90,19 +132,27 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of items,let i = index">
-                <td>{{i+1}}</td>
-                <td>{{item.email}}</td>
-                <td>{{item.name}}</td>
-                <td>{{item.subject}}</td>
-                <td>{{item.standard}}</td>
-                <td>{{item.phonenumber}}</td>
-                <td>
-                    <button class="btn btn_edit " (click)="editteacher(item)" data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"><i class="fa-solid fa-pen-to-square"></i></button>
-                    <button class="btn btn_delete" (click)="deleteteacher(item.id)"><i class="fa-solid fa-trash"></i></button>
-                </td>
-            </tr>
+            <ng-container *ngIf="teacherFilteredItems.length > 0">
+                <tr *ngFor="let item of teacherFilteredItems,let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.subject}}</td>
+                    <td>{{item.standard}}</td>
+                    <td>{{item.phonenumber}}</td>
+                    <td>
+                        <button class="btn btn_edit " (click)="editteacher(item)" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button class="btn btn_delete" (click)="deleteteacher(item.id)"><i
+                                class="fa-solid fa-trash"></i></button>
+                    </td>
+                </tr>
+            </ng-container>
+            <ng-container *ngIf="teacherFilteredItems.length == 0">
+                <tr>
+                    <td colspan="7" class="text-center py-4">No Data Found</td>
+                </tr>
+            </ng-container>
         </tbody>
     </table>
 </div>

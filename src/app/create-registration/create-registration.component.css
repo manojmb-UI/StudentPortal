@@ -1,0 +1,42 @@
+.mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 16px;
+  }
+  .box_header{
+    padding: 15px;
+    background-color: var(--color-main-theme);
+    border-radius: 8px 8px 0px 0px ; 
+  }
+  .box_header h6{
+    margin-bottom: 0px;
+    color: #fff;
+  }
+  .box_container{
+    width: 100%;
+    margin: 0 auto;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  .box_body{
+    padding: 15px;
+    background-color: #fff;
+    border-radius:0px;
+  }
+  .box_footer{
+    padding: 15px;
+    border-radius: 0px 0px 8px 8px;
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+
+  }
+  .form-label{
+    color: rgba(0,0,0,0.7);
+    font-size: 14px;
+
+  }
+  .form-control,.form-select,.fs-14{
+    font-size: 14px;
+  }

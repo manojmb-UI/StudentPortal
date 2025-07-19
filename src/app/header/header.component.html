@@ -1,3 +1,23 @@
+<div class="top_header">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between py-2">
+      <a href="">MBM</a>
+      <div class="dropdown username">
+        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <div class="user_profile">
+            <div class="user_profile_dp">{{profileUserName}}</div>
+            <span>{{currentUserName}}</span>
+            <span class="down_chevron"></span>
+          </div>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" (click)="goToProfile()">My Profile</a></li>
+          <li><a class="dropdown-item" routerLink="/login" (click)="logout()">logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 <nav class="navbar navbar-expand-lg bg-body-tertiary bg_navbar_clr">
   <div class="container">
     <!-- <a class="navbar-brand" href="#"></a> -->
@@ -12,38 +32,18 @@
             <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link "  routerLink="/student" routerLinkActive="active">Student</a>
+            <a class="nav-link " routerLink="/student" routerLinkActive="active">Student</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/teacher" routerLinkActive="active">Teacher</a>
           </li>
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" routerLink="/teacherregistration" routerLinkActive="active">Teacher Registration</a>
           </li> -->
         </ul>
-        <div class="dropdown username">
-          <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <div class="user_profile">
-              <div class="user_profile_dp">{{profileUserName}}</div>
-              <span>{{currentUserName}}</span>
-              <span class="down_chevron"></span>
-            </div>
-          </button>
-          <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" (click)="goToProfile()">My Profile</a></li>
-            <li><a class="dropdown-item" routerLink="/login" (click)="logout()">logout</a></li>
-          </ul>
-        </div>
       </div>
     </div>
   </div>

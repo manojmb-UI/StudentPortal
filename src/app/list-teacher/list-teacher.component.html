@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <div class="box_container">
+    <div class="box_header d-flex justify-content-between mb-4">
+      <h6>Teacher Registration</h6>
+      <button class="btn btn-primary" (click)="addteacherbtn()">Add Teacher</button>
+    </div>
+    <div class="box_body">
+     <table class="table table-bordered">
+       <thead>
+         <tr>
+           <th scope="col">S.No</th>
+           <th scope="col">Name</th>
+           <th scope="col">Email</th>
+           <th scope="col">Mobile</th>
+           <th scope="col">Action</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr *ngFor="let teacher of teacherList; let i = index">
+           <td>{{i+1}}</td>
+           <td>{{teacher.name}}</td>
+           <td>{{teacher.email}}</td>
+           <td>{{teacher.contact}}</td>
+           <td>
+            
+          <button class="btn_action me-3" (click)="editteacher(teacher)">
+            <img src="../../assets/img/edit.svg" alt="">
+          </button>
+          <button class="btn_action btn-danger" (click)="deleteteacher(teacher.id)">
+            <img src="../../assets/img/ic_delete.svg" alt="">
+          </button></td>
+         </tr>
+
+     </table>
+    </div>
+</div>

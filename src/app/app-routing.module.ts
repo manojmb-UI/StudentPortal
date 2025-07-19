@@ -8,6 +8,9 @@ import { TeacherComponent } from './teacher/teacher.component';
 import { HomeComponent } from './home/home.component';
 import { MyProfileComponent } from './my-profile/my-profile.component'
 import { authGuard } from './auth.guard';
+import { CreateRegistrationComponent } from './create-registration/create-registration.component';
+import { TeacherRegistrationComponent } from './teacher-registration/teacher-registration.component';
+import { ListTeacherComponent } from './list-teacher/list-teacher.component';
 
 
 const routes: Routes = [
@@ -19,8 +22,12 @@ const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' }, 
       { path: 'student', component: StudentComponent },
       { path: 'teacher', component: TeacherComponent },
+      { path: 'create-registeration', component: CreateRegistrationComponent },
+      { path: 'create-registeration/:id', component: CreateRegistrationComponent },
+      { path: 'register', component: ListTeacherComponent },
       { path: 'myprofile' , component : MyProfileComponent},
       { path: 'home', component: HomeComponent },
+      { path: 'teacherregistration', component: ListTeacherComponent }
     ],
   },
  

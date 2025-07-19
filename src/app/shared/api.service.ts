@@ -49,8 +49,29 @@ export class ApiService {
       return res;
     }))
   }
-  getProfile(){
-    return
+  postTeacherData(data:any){
+    return this._http.post<any>("http://localhost:3000/teacher-registration",data).
+    pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+  updateTeacherData(id:number,data:any){
+    return this._http.put<any>("http://localhost:3000/teacher-registration/"+id,data).
+    pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+  deleteTeacherData(id:number){
+    return this._http.delete<any>("http://localhost:3000/teacher-registration/"+id).
+    pipe(map((res:any)=>{
+      return res;
+    }))
+  }
+  getTeacherData(){
+    return this._http.get<any>("http://localhost:3000/teacher-registration").
+    pipe(map((res:any)=>{
+      return res;
+    }))
   }
 
 }

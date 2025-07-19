@@ -1,0 +1,38 @@
+.form_box_header{
+    padding: 15px 15px;
+    background-color: #52a2f3;
+    border-bottom: 1px solid #ccc;
+    border-radius:5px 5px 0px 0px;
+    
+}
+.form_box_header h5{
+  margin: 0;
+    color:#ffffff;
+    font-size:18px;
+    font-weight:400;
+}
+.form_box{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+}
+.form_box_body{
+    padding: 20px;
+}
+.form_box_body label{
+    margin-bottom:4px;
+    font-size:14px;
+    color: grey;
+}
+.form_box_body input, .form_box_body select{
+    font-size:14px;
+}
+.footer_buttons{
+    border-top: 1px solid #ccc;
+    padding: 15px;
+}
+.error_text{
+    color: red;
+    font-size: 13px;
+    margin-top: 5px;
+}
