@@ -5,3 +5,14 @@
 table{
     background-color: var(--color-white);
 }
+.filter_row label{
+    font-size: var(--f-14);
+    color: var(--color-black);
+}
+.filter_row select{
+    font-size: var(--f-14);
+    color: var(--color-black);
+}
+.filter_row button{
+    font-size: var(--f-14);
+}

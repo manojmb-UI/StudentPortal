@@ -1,0 +1,147 @@
+<div class="breadcrumb_container">
+  <div class="container">
+    <div class="back_arr_text mb-3">
+      <button class="back_arr" (click)="goBack()">
+        <i class="fa-solid fa-arrow-left"></i>
+      </button>
+      <div>
+        <h6 class="breadcrumb_title ">Create Registration</h6>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Teachers List</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Create Registration</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container mt-1">
+  <div class="box_container mb-5">
+    <div class="box_header">
+      <h6>User Registration Form</h6>
+    </div>
+    <div class="box_body" *ngIf="!previewpage">
+      <form [formGroup]="userForm" class="row" novalidate>
+        <div class="mb-3 col-md-4">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-control" formControlName="name" placeholder="Enter your name" />
+          <div class="text-danger" *ngIf="userForm.get('name')?.touched && userForm.get('name')?.invalid">
+            Name is required
+          </div>
+        </div>
+
+        <div class="mb-3 col-md-4">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" formControlName="email" placeholder="Enter your email" />
+          <div class="text-danger" *ngIf="userForm.get('email')?.touched && userForm.get('email')?.invalid">
+            Valid email is required
+          </div>
+        </div>
+
+        <div class="mb-3 col-md-4">
+          <label class="form-label">Contact Number</label>
+          <input type="text" class="form-control" formControlName="contact" placeholder="Enter contact number" />
+          <div class="text-danger" *ngIf="userForm.get('contact')?.touched && userForm.get('contact')?.invalid">
+            Enter 10-digit contact number
+          </div>
+        </div>
+
+        <div class="mb-3 col-md-4">
+          <label class="form-label">Gender</label>
+          <select class="form-select" formControlName="gender">
+            <option value="">Select gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+          <div class="text-danger" *ngIf="userForm.get('gender')?.touched && userForm.get('gender')?.invalid">
+            Please select a gender
+          </div>
+        </div>
+        <div class="mb-3 col-md-4">
+          <label class="form-label d-block">Upload File</label>
+
+          <!-- Hidden file input -->
+          <input type="file" #fileInput class="d-none" (change)="onFileChange($event)" />
+
+          <!-- Custom upload button -->
+          <button type="button" class="btn btn-outline-primary fs-14" (click)="fileInput.click()">
+            Upload File
+          </button>
+
+          <div *ngIf="userForm.get('file')?.value" class="mt-2 d-flex align-items-center gap-2">
+            <span class="badge bg-secondary">{{ userForm.get('file')?.value.name }}</span>
+            <button type="button" class="btn btn-sm btn-outline-danger" (click)="removeFile()">Remove</button>
+          </div>
+
+          <div class="text-danger mt-1" *ngIf="userForm.get('file')?.touched && userForm.get('file')?.invalid">
+            File is required
+          </div>
+        </div>
+        <div class="mb-3 mt-4">
+          <div class="d-flex align-items-center mb-3">
+            <h6 class="me-3 mb-0">Subjects Known</h6>
+            <button class="btn btn-primary" (click)="addSubject()">Add</button>
+          </div>
+          <div formArrayName="subjects">
+            <div *ngFor="let subject of userForm.get('subjects')?.controls; let i = index" [formGroupName]="i"
+              class="row align-items-end">
+              <div class="mb-3 col-md-4">
+                <label class="form-label">Subjects</label>
+                <select class="form-select" formControlName="subject">
+                  <option value="">Select Subject</option>
+                  <option value="english">English</option>
+                  <option value="tamil">Tamil</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="mb-3 col-md-4">
+                <label class="form-label">Years of Experience</label>
+                <input type="number" class="form-control" formControlName="year_of_exp"
+                  placeholder="Enter years of experience" />
+              </div>
+              <div class="mb-3 col-md-4">
+                <button class="btn btn-danger" (click)="removeSubject(i)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="box_body preview" *ngIf="previewpage">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Name</label>
+          <p>{{previewData.name}}</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Email</label>
+          <p>{{previewData.email}}</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Contact Number</label>
+          <p>{{previewData.contact}}</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label class="form-label">Gender</label>
+          <p>{{previewData.gender}}</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label class="form-label">File</label>
+          <p *ngIf="previewData?.file">{{previewData?.file?.name}}</p>
+          <p *ngIf="!previewData.file">No file uploaded</p>
+        </div>
+      </div>
+    </div>
+    <div class="box_footer ">
+      <div class="d-flex justify-content-end ">
+        <button class="btn btn-secondary me-3" type="button" (click)="onBack()" *ngIf="previewpage">Back</button>
+        <button class="btn btn-primary" type="submit" (click)="onPreview()" *ngIf="!previewpage"
+          [disabled]="userForm.invalid">Preview</button>
+        <button class="btn btn-primary" type="submit" (click)="onSubmit()" *ngIf="previewpage">{{patchId ? 'Update' :
+          'Submit'}}</button>
+      </div>
+    </div>
+  </div>
+</div>

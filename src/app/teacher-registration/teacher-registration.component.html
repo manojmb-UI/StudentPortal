@@ -1,0 +1,74 @@
+<div class="container mt-5">
+    <div class="form_box">
+        <div class="form_box_header">
+            <h5>Teacher Registration</h5>
+        </div>
+        <div class="form_box_body" [formGroup]="teacherRegistrationForm">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group mb-3">
+                        <label for="teachername">Teacher Name</label>
+                        <input type="text" class="form-control" id="teachername" name="teachername"
+                            formControlName="teachername" placeholder="Enter Teacher Name">
+                        <div class="error_text" *ngIf="teacherRegistrationForm.get('teachername').invalid && teacherRegistrationForm.get('teachername').touched">Enter The Teacher Name</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group mb-3">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" formControlName="email"
+                            placeholder="Enter Email">
+                        <div class="error_text" *ngIf="teacherRegistrationForm.get('email').invalid && teacherRegistrationForm.get('email').touched">Enter The Email</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group mb-3">
+                        <label for="phonenumber">Phone Number</label>
+                        <input type="text" class="form-control" id="phonenumber" name="phonenumber"
+                            formControlName="phonenumber" placeholder="Enter The Phone Number">
+                        <div class="error_text " *ngIf="teacherRegistrationForm.get('phonenumber').invalid && teacherRegistrationForm.get('phonenumber').touched">Enter The Phone Number</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="d-flex align-items-center mb-3">
+                        <button class="btn btn-primary" (click)="addSubject()">
+                            <i class="fa-solid fa-plus"></i>
+                            <span class="ps-2">Add Subject</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-4" formArrayName="subjects">
+                    <div *ngFor="let subject of subjects.controls; let i = index" [formGroupName]="i"
+                        class="d-flex align-items-end">
+                        <div class="form-group me-4 mb-3 w-100">
+                            <label for="subject-{{i}}">Subject</label>
+                            <select name="subject" id="subject-{{i}}" formControlName="subject" class="form-select">
+                                <option value="Maths">Maths</option>
+                                <option value="Science">Science</option>
+                                <option value="English">English</option>
+                                <option value="History">History</option>
+                                <option value="Geography">Geography</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Physics">Physics</option>
+                                <option value="Chemistry">Chemistry</option>
+                                <option value="Biology">Biology</option>
+                                <option value="Economics">Economics</option>
+                                <option value="Psychology">Psychology</option>
+                                <option value="Sociology">Sociology</option>
+                                <option value="Political Science">Political Science</option>
+                            </select>
+                            <div class="error_text" *ngIf="subject.get('subject')?.invalid && subject.get('subject')?.touched">Select a Subject</div>
+                        </div>
+                        <button class="btn btn-danger mb-3" (click)="removeSubject(i)"><i
+                                class="fa-solid fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_buttons d-flex justify-content-end mt-4">
+            <button type="submit" class="btn btn-primary px-5" (click)="submitForm()">Submit</button>
+        </div>
+    </div>
+</div>

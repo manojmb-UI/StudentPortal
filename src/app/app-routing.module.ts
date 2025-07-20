@@ -8,24 +8,36 @@ import { TeacherComponent } from './teacher/teacher.component';
 import { HomeComponent } from './home/home.component';
 import { MyProfileComponent } from './my-profile/my-profile.component'
 import { authGuard } from './auth.guard';
+import { CreateRegistrationComponent } from './create-registration/create-registration.component';
+import { TeacherRegistrationComponent } from './teacher-registration/teacher-registration.component';
+import { ListTeacherComponent } from './list-teacher/list-teacher.component';
 
 
 const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    canActivate: [authGuard], 
+    canActivate: [authGuard],
     children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' }, 
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'student', component: StudentComponent },
       { path: 'teacher', component: TeacherComponent },
-      { path: 'myprofile' , component : MyProfileComponent},
+      {
+        path: 'register',
+        children: [
+          { path: '', component: ListTeacherComponent },
+          { path: 'create-registeration', component: CreateRegistrationComponent },
+          { path: 'create-registeration/:id', component: CreateRegistrationComponent },
+        ]
+      },
+      { path: 'myprofile', component: MyProfileComponent },
       { path: 'home', component: HomeComponent },
+      { path: 'teacherregistration', component: ListTeacherComponent }
     ],
   },
- 
-  { path: 'login', component: LoginComponent }, 
-  { path: 'signup', component: SignupComponent }, 
+
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 

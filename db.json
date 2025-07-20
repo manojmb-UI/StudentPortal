@@ -111,5 +111,42 @@
   "comments": [],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "teacher-registration": [
+    {
+      "name": " mnkjdnbv",
+      "email": "mnkjdnbv@gmail.com",
+      "contact": "9876543211",
+      "gender": "Male",
+      "file": {},
+      "id": 3
+    },
+    {
+      "name": "ram1",
+      "email": "ram@gmail.com",
+      "contact": "6382103126",
+      "gender": "Male",
+      "file": {},
+      "id": 4
+    },
+    {
+      "name": "ramdvd",
+      "email": "ram@gmail.com",
+      "contact": "6382103126",
+      "gender": "Male",
+      "file": {},
+      "id": 5
+    },
+    {
+      "name": "Sathish",
+      "email": "sathish@gmail.com",
+      "contact": "6437283746",
+      "gender": "Male",
+      "file": {},
+      "subjects": [
+        null
+      ],
+      "id": 6
+    }
+  ]
 }

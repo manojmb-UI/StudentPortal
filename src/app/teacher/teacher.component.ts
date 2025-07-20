@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ApiService } from '../shared/api.service';
+import { BreadcrumbService } from '../breadcrumb-service/breadcrumb.service';
 
 @Component({
   selector: 'app-teacher',
@@ -15,7 +16,10 @@ export class TeacherComponent {
   teacherform: any;
   currentitem: any = null;
   ModalHeaderName: any;
-  constructor(private fb: FormBuilder, private apiservice: ApiService) { }
+  filterForm:any;
+  teacherFilteredItems: any;
+  breadcrumbs: any =[];
+  constructor(private fb: FormBuilder, private apiservice: ApiService, private breadcrumbservice: BreadcrumbService) { }
   ngOnInit() {
     this.teacherform = this.fb.group({
       email: ['', Validators.required],
@@ -24,9 +28,14 @@ export class TeacherComponent {
       standard: ['', Validators.required],
       phonenumber: ['', Validators.required],
     })
+    this.filterForm = this.fb.group({
+      subject: ['', Validators.required],
+      standard: ['', Validators.required],
+    })
     this.getteacher();
     this.updatebutton = false ;
     this.addbutton = true;
+    this.addBreadcrumb();
   }
   addteacherbtn(){
     this.updatebutton = false;
@@ -48,6 +57,7 @@ export class TeacherComponent {
   getteacher() {
     this.apiservice.getteacher().subscribe((res) => {
       this.items = res;
+      this.teacherFilteredItems = this.items;
     })
   }
   editteacher(item: any) {
@@ -77,5 +87,30 @@ export class TeacherComponent {
       })
     }
 
+  }
+  applyFilters() {
+    console.log(this.filterForm.value, 'this.filterForm.value');
+    this.teacherFilteredItems  = this.items.filter((item: any)=>{
+       return this.filterForm.value.subject == item.subject && this.filterForm.value.standard == item.standard
+    })
+    console.log('teacherFilteredItems',this.teacherFilteredItems)
+    this.filterForm.reset();
+  }
+  cancelFilters(){
+    this.teacherFilteredItems = this.items;
+    this.filterForm.reset();
+    this.getteacher();
+  }
+  addBreadcrumb(){
+    this.breadcrumbs = []
+    this.breadcrumbs.push({
+      label:'Home',
+      url:'/'
+    })
+    this.breadcrumbs.push({
+      label:'Teacher',
+      url:'/'
+    })
+    this.breadcrumbservice.setCustomBreadCrumb(this.breadcrumbs);
   }
 }
