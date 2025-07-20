@@ -17,22 +17,27 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
-    canActivate: [authGuard], 
+    canActivate: [authGuard],
     children: [
-      { path: '', redirectTo: 'home', pathMatch: 'full' }, 
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'student', component: StudentComponent },
       { path: 'teacher', component: TeacherComponent },
-      { path: 'create-registeration', component: CreateRegistrationComponent },
-      { path: 'create-registeration/:id', component: CreateRegistrationComponent },
-      { path: 'register', component: ListTeacherComponent },
-      { path: 'myprofile' , component : MyProfileComponent},
+      {
+        path: 'register',
+        children: [
+          { path: '', component: ListTeacherComponent },
+          { path: 'create-registeration', component: CreateRegistrationComponent },
+          { path: 'create-registeration/:id', component: CreateRegistrationComponent },
+        ]
+      },
+      { path: 'myprofile', component: MyProfileComponent },
       { path: 'home', component: HomeComponent },
       { path: 'teacherregistration', component: ListTeacherComponent }
     ],
   },
- 
-  { path: 'login', component: LoginComponent }, 
-  { path: 'signup', component: SignupComponent }, 
+
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   { path: '**', redirectTo: 'login', pathMatch: 'full' },
 ];
 

@@ -17,11 +17,9 @@ export class ApiService {
     return this._http.get('http://localhost:3000/teachers');
   }
   updateteacher(id:number, data:any): Observable<any>{
-    // return this._http.put<any>('http://localhost:3000/teachers/'+id,data)
     return this._http.put(`http://localhost:3000/teachers/${id}`, data);
   }
   deleteteacherr(id:number){
-    debugger;
     return this._http.delete('http://localhost:3000/teachers/'+id)
   }
 

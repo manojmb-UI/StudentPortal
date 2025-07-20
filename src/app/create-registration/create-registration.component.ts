@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { HttpClient } from '@angular/common/http';
 import { CommonService } from '../common/common.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { ApiService } from '../shared/api.service';
 
 @Component({
@@ -22,20 +23,18 @@ export class CreateRegistrationComponent {
   previewpage: boolean = false;
   patchId:any;
   patchUserDetails: any;
-  constructor(private fb: FormBuilder,private http: HttpClient, private commonservice: CommonService, private route: Router, private api: ApiService, private actRoute : ActivatedRoute) { }
+  constructor(private fb: FormBuilder,private http: HttpClient, private commonservice: CommonService, private route: Router, private api: ApiService, private actRoute : ActivatedRoute, private location: Location) { }
   ngOnInit() {
     this.initForm();
     this.getRouteParams();
   }
   getRouteParams(){
-    debugger
     this.patchId = this.actRoute.snapshot.paramMap.get('id');
     if(this.patchId){
       this.patchDetails();
     }
   }
  patchDetails() {
-  debugger;
   this.api.getTeacherData().subscribe(res => {
     console.log(res);
 
@@ -128,6 +127,9 @@ export class CreateRegistrationComponent {
     if (this.fileInput) {
       this.fileInput.nativeElement.value = '';
     }
+  }
+  goBack(){
+    this.location.back();
   }
 
 }

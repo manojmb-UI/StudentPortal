@@ -1,0 +1,18 @@
+.footer{
+    text-align: center;
+    padding: 10px;
+    background-color: var(--color-main-theme);
+    color: var(--color-white);
+    font-size: 12px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.footer a{
+    color: var(--color-white);
+    text-decoration: none;
+}
+.foot_h{
+    height: 70px;
+}

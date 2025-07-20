@@ -22,11 +22,11 @@ export class ListTeacherComponent {
   })
  }
  addteacherbtn(){
-  this.route.navigate(['/create-registeration'])
+  this.route.navigate(['/register/create-registeration'])
  }
  editteacher(event:any){
   console.log(event);
-  this.route.navigate([`/create-registeration/${event.id}`])
+  this.route.navigate([`/register/create-registeration/${event.id}`])
  }
  deleteteacher(id:any){
   this.api.deleteTeacherData(id).subscribe(res=>{

@@ -136,6 +136,17 @@
       "gender": "Male",
       "file": {},
       "id": 5
+    },
+    {
+      "name": "Sathish",
+      "email": "sathish@gmail.com",
+      "contact": "6437283746",
+      "gender": "Male",
+      "file": {},
+      "subjects": [
+        null
+      ],
+      "id": 6
     }
   ]
 }

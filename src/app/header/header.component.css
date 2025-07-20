@@ -4,8 +4,8 @@
 }
 .navbar-nav a{
     color: var(--color-white);
-    padding: 10px 15px;
     font-size: var(--f-14);
+    padding: 10px 20px;
 }
 .navbar-nav .nav-link.active{
     background-color: var(--color-white);
@@ -62,4 +62,16 @@
     border-top: none;
     right: 10px;
     transform: rotate(45deg);
+}
+.logo{
+    background-color: var(--color-main-theme);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    color: var(--color-white);
+    font-weight: var(--fw-500);
+    font-size: var(--f-14);
 }

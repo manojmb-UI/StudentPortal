@@ -40,3 +40,30 @@
   .form-control,.form-select,.fs-14{
     font-size: 14px;
   }
+  .breadcrumb_container{
+    position: relative;
+    padding: 25px 20px;
+    z-index: 2;
+}
+.breadcrumb_container::after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100px;
+    background-color: var(--color-sub-main-theme);
+    top: 0px;
+    left: 0;
+    z-index: -1;
+}
+.back_arr{
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  padding: none;
+}
+.back_arr_text{
+  display: flex;
+  column-gap: 6px;
+  align-items: flex-start;
+}
